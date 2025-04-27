@@ -1,0 +1,42 @@
+<div class="d-flex flex-column h-100 overflow-auto">
+        <table class="table table-striped ">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Company</th>
+                    <th>Designation</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <input class="p-1 w-100 search_box" placeholder="Search" type="text" [(ngModel)]="nameSearch">
+                    </td>
+                    <td>
+                        <input class="p-1 w-100 search_box"  placeholder="Search" type="text" [(ngModel)]="companySearch">
+                    </td>
+                    <td>
+                        <input class="p-1 w-100 search_box"  placeholder="Search" type="text" [(ngModel)]="designationSearch">
+                    </td>
+                </tr>
+                <ng-container  *ngFor="let data of tableData | search : nameSearch : companySearch :designationSearch">
+                    <tr>
+                        <td [ngClass]="data.company?.designation == 'angular Developer' ? 'bg-green-subtle' : ''">
+                            {{data.name}}
+                            <p>
+                                <small>{{data.email}}</small>
+                            </p>
+                        </td>
+                        <td [ngClass]="data.company?.designation == 'angular Developer' ? 'bg-green-subtle' : ''">
+                            {{data.company?.name}}
+                        </td>
+                        <td [ngClass]="data.company?.designation == 'angular Developer' ? 'bg-green-subtle' : ''">
+                           {{data.company?.designation}} 
+                        </td>
+                    </tr>
+                </ng-container>
+               
+            </tbody>
+        </table>
+</div>
